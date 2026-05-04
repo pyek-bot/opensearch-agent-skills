@@ -66,7 +66,7 @@ These MCP servers enhance the skill with documentation lookup, AWS knowledge, an
 
 The JSON block above shows a minimal config. For AOS/AOSS clusters, ask the user for their endpoint, auth method, and region, then use the appropriate env block:
 
-For basic auth (local/self-managed):
+For basic auth (local/self-managed) — [User Guide](https://github.com/opensearch-project/opensearch-mcp-server-py/blob/main/USER_GUIDE.md#basic-authentication):
 ```json
 {
   "opensearch-mcp-server": {
@@ -83,7 +83,7 @@ For basic auth (local/self-managed):
 }
 ```
 
-For Amazon OpenSearch Service (AOS):
+For Amazon OpenSearch Service (AOS) — [User Guide](https://github.com/opensearch-project/opensearch-mcp-server-py/blob/main/USER_GUIDE.md#iam-role-authentication):
 ```json
 {
   "opensearch-mcp-server": {
@@ -99,7 +99,7 @@ For Amazon OpenSearch Service (AOS):
 }
 ```
 
-For Amazon OpenSearch Serverless (AOSS):
+For Amazon OpenSearch Serverless (AOSS) — [User Guide](https://github.com/opensearch-project/opensearch-mcp-server-py/blob/main/USER_GUIDE.md#opensearch-serverless):
 ```json
 {
   "opensearch-mcp-server": {
@@ -332,6 +332,14 @@ Only if the user wants AWS deployment. Read the appropriate reference guide:
 See [AWS Reference](aws/reference.md) for cost, security, and constraints.
 
 ## Observability & Log Analytics
+
+**Before doing anything else**, ask the user which cluster to connect to. Do not assume localhost or any default. Ask:
+
+1. Is it a local cluster, Amazon OpenSearch Service (AOS), or Amazon OpenSearch Serverless (AOSS)?
+2. What is the endpoint URL?
+3. How do they authenticate — username/password, AWS profile, or AWS credentials?
+
+Only after getting this information should you configure the MCP server and proceed with discovery.
 
 When the user wants to analyze logs or investigate observability data in OpenSearch, follow a discovery-first approach: understand what indices exist, learn the schema from mappings and sample documents, then build queries. Read the appropriate reference file based on intent:
 
